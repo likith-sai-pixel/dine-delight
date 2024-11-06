@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Management</title>
+    <link rel="stylesheet" href="userstyles.css">
+    <style>
+        /* Body styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Container styling */
+        .container {
+            max-width: 90%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        /* Header styling */
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        /* Navigation styling */
+        .nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .nav button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #6a11cb;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .nav button.active {
+            background-color: #2575fc;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            display: none; /* Hide all tables initially */
+        }
+
+        table th, table td {
+            padding: 16px;
+            border: 1px solid #ddd;
+            text-align: left;
+            word-wrap: break-word; /* Ensures long text wraps within the cell */
+            font-size: 1rem;
+        }
+
+        /* Header styling with a cool gradient */
+        table thead {
+            background-image: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+        }
+
+        /* Header cell styling */
+        table th {
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Alternating row colors for clarity */
+        table tbody tr:nth-child(odd) {
+            background-color: #8d0b0b;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #4e032d;
+        }
+
+        /* Hover effect to highlight row */
+        table tbody tr:hover {
+            background-color: #052856;
+            cursor: pointer;
+        }
+
+        /* Adjust font size and remove border for the error message */
+        .error {
+            font-size: 1.2rem;
+            color: red;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Data Management</h1>
+        <div class="nav">
+            <button id="customersBtn" onclick="showTable('customers')">Customers Data</button>
+            <button id="registrationsBtn" onclick="showTable('registrations')">Registrations Data</button>
+            <button id="ordersBtn" onclick="showTable('orders')">Orders Data</button>
+        </div>
+
+        <table id="customersTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Zipcode</th>
+                    <th>Preference</th>
+                    <th>Notes</th>
+                    <th>Date and Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Customer data will be populated here -->
+            </tbody>
+        </table>
+
+        <table id="registrationsTable">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Reservation Date</th>
+                    <th>Reservation Time</th>
+                    <th>No.of.Guests</th>
+                    <th>Table</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Registration data will be populated here -->
+            </tbody>
+        </table>
+
+        <table id="ordersTable">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer Name</th>
+                    <th>Order Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Order data will be populated here -->
+            </tbody>
+        </table>
+
+        <p class="error" id="error-message" style="display: none;">Failed to load customer data. Please try again later.</p>
+    </div>
+
+    <script>
+        function showTable(table) {
+            // Hide all tables
+            document.querySelectorAll('table').forEach(t => {
+                t.style.display = 'none';
+            });
+
+            // Show the selected table
+            if (table === 'customers') {
+                document.getElementById('customersTable').style.display = 'table';
+                fetchCustomersData();
+            } else if (table === 'registrations') {
+                document.getElementById('registrationsTable').style.display = 'table';
+                fetchRegistrationsData(); // Placeholder for future implementation
+            } else if (table === 'orders') {
+                document.getElementById('ordersTable').style.display = 'table';
+                fetchOrdersData(); // Placeholder for future implementation
+            }
+        }
+
+        function fetchCustomersData() {
+            fetch('http://localhost:5000/users')  // Correct fetch URL
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Received data:', data);
+                    const tableBody = document.querySelector('#customersTable tbody');
+                    tableBody.innerHTML = ''; // Clear previous data
+                    if (data.length === 0) {
+                        document.getElementById('error-message').textContent = 'No customer data found.';
+                        document.getElementById('error-message').style.display = 'block';
+                        return;
+                    }
+
+                    data.forEach(customer => {
+                        const submissionTime = new Date(customer.submission_time * 1000);
+                        const displayTime = submissionTime && !isNaN(submissionTime.getTime())
+                            ? submissionTime.toLocaleString()
+                            : 'N/A';
+
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${customer.name || 'N/A'}</td>
+                            <td>${customer.phone || 'N/A'}</td>
+                            <td>${customer.email || 'N/A'}</td>
+                            <td>${customer.address || 'N/A'}</td>
+                            <td>${customer.zipcode || 'N/A'}</td>
+                            <td>${customer.preference || 'N/A'}</td>
+                            <td>${customer.notes || 'N/A'}</td>
+                            <td>${displayTime}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching customer data:', error);
+                    document.getElementById('error-message').style.display = 'block';
+                });
+        }
+
+        function fetchRegistrationsData() {
+            // Placeholder function for fetching registration data
+            console.log('Fetching registrations data...');
+            // You can implement similar fetch logic as fetchCustomersData here
+        }
+
+        function fetchOrdersData() {
+            // Placeholder function for fetching order data
+            console.log('Fetching orders data...');
+            // You can implement similar fetch logic as fetchCustomersData here
+        }
+    </script>
+</body>
+</html>

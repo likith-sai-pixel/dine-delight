@@ -1,0 +1,687 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #ce75b1, #82225e); /* Gradient background */
+}
+
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: #343a40; /* Dark header */
+    color: #f8f9fa; /* Light text color */
+}
+
+h1, h2, h6 {
+    margin: 0;
+}
+
+/* Floating Cart Button */
+#view-cart-button {
+    position: fixed;
+    bottom: 20px; /* Place it at the bottom for better visibility */
+    right: 20px;
+    padding: 15px 30px; /* Increased padding for better accessibility */
+    background-color: #28a745; /* Green for the cart button */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1000;
+    transition: background-color 0.3s ease; /* Smooth transition */
+    font-size: 16px; /* Bigger font size for visibility */
+}
+
+#view-cart-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Cart Items Container */
+#cart-items {
+    max-height: 300px; /* Set a max-height for the cart */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding-right: 10px;
+    margin-bottom: 20px; /* Add space between cart items and buttons */
+}
+
+/* Styling the Cart Dialog */
+#cart-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    background-color: #ffffff; /* White for readability */
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: none; /* Hidden by default */
+    z-index: 1000;
+    max-height: 70vh; /* Limit the height to prevent overflow */
+    overflow-y: auto; /* Enable scrolling when content exceeds height */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Close Button */
+.close-button {
+    display: block;
+    margin-left: auto;
+    background: #dc3545; /* Red for close button */
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s; /* Smooth transition */
+    font-size: 14px;
+}
+
+.close-button:hover {
+    background: #c82333; /* Darker red on hover */
+}
+
+/* Proceed to Payment Button */
+#proceed-to-payment {
+    background-color: #007bff; /* Blue for the payment button */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+#proceed-to-payment:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Menu Item Hover Effect */
+#menu ul li {
+    position: relative;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#menu ul li:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+/* Quantity Control Buttons */
+.quantity-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.quantity-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Cart Items Styling */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.cart-item span.quantity {
+    margin: 0 10px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Scrollbar Styles */
+#cart-items::-webkit-scrollbar {
+    width: 10px; /* Scrollbar width */
+}
+
+#cart-items::-webkit-scrollbar-thumb {
+    background-color: #007bff; /* Blue for the scrollbar */
+    border-radius: 5px;
+}
+/* Cart Item Image */
+.cart-item-image {
+    width: 50px; /* Set a small width for the image */
+    height: 50px; /* Set a small height for the image */
+    margin-right: 10px; /* Space between image and text */
+    border-radius: 5px; /* Slightly round corners for a softer look */
+    object-fit: cover; /* Maintain aspect ratio without stretching */
+    border: 1px solid #ccc; /* Optional: add a border for better visibility */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+}
+
+/* Menu Items */
+#menu {
+    background-color: #ffffff; /* White background for menu */
+}
+
+#menu ul {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap */
+    list-style-type: none;
+    padding: 0;
+}
+
+#menu li {
+    flex: 0 0 25%; /* 4 items per row */
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #f8f9fa; /* Light grey for menu items */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#menu li:hover {
+    transform: scale(1.05); /* Slight scale on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+}
+
+/* Chinese Menu Items */
+#chinese {
+    background-color: #ffffff; /* White background for menu */
+}
+
+#chinese ul {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap */
+    list-style-type: none;
+    padding: 0;
+}
+
+#chinese li {
+    flex: 0 0 25%; /* 4 items per row */
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #f8f9fa; /* Light grey for menu items */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#chinese li:hover {
+    transform: scale(1.05); /* Slight scale on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+}
+
+/* Italian Menu Items */
+#italian {
+    background-color: #ffffff; /* White background for menu */
+}
+
+#italian ul {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap */
+    list-style-type: none;
+    padding: 0;
+}
+
+#italian li {
+    flex: 0 0 25%; /* 4 items per row */
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #f8f9fa; /* Light grey for menu items */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#italian li:hover {
+    transform: scale(1.05); /* Slight scale on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+}
+
+/* Grilled Dishes */
+#grilleddishes {
+    background-color: #ffffff; /* White background for menu */
+}
+
+#grilleddishes ul {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap */
+    list-style-type: none;
+    padding: 0;
+}
+
+#grilleddishes li {
+    flex: 0  25%; /* 4 items per row */
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #f8f9fa; /* Light grey for menu items */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: transform .2s, box-shadow 0.2s;
+}
+
+#grilleddishes li:hover {
+    transform: scale(1.05); /* Slight scale on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+}
+
+/* Menu Item Images */
+#menu img,
+#chinese img,
+#italian img,
+#grilleddishes img,
+#desserts img{
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    padding: 30px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+
+#desserts {
+    background-color: #ffffff; /* White background for consistency */
+}
+
+#desserts ul {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap */
+    list-style-type: none;
+    padding:0;
+}
+
+#desserts li {
+    flex: 0 0 25%; /* 4 items per row */
+    box-sizing: border-box;
+    padding: 0px;
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #f8f9fa; /* Light grey for menu items */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#desserts li:hover {
+    transform: scale(1.05); /* Slight scale on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+}
+
+
+
+/* Style for anchor link as a button */
+.button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* Blue for buttons */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.button-link:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.add-to-cart {
+    padding: 5px 10px;
+    background-color: #28a745; /* Green for add-to-cart */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add-to-cart:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Cart Item */
+/* General Cart Item Styling */
+.cart-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(220, 220, 220, 0.5)); /* Soft gradient for depth */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border */
+    border-radius: 15px; /* Rounded for a softer look */
+    color: #222; /* Dark text for readability */
+    font-size: 20px; /* Adjusted font size for item names */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease; /* Smooth hover effects */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    opacity: 0; /* Start hidden for animation */
+    animation: fadeIn 0.5s forwards; /* Fade-in animation */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    to {
+        opacity: 1; /* Fully visible */
+    }
+}
+
+.cart-item:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow for emphasis */
+}
+
+/* Item Total Styling */
+.item-total {
+    font-weight: bold;  
+    font-size: 22px; /* Larger size for prominence */
+    color: #ff6347; /* Tomato color for totals */
+    margin-top: 10px; /* Space above total */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+}
+
+/* Quantity Control */
+.quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 240px; /* Adjusted width */
+    font-size: 24px; /* Adjusted size */
+    margin-top: 15px; /* Space above */
+}
+
+/* Quantity Buttons */
+.increase-quantity, .decrease-quantity {
+    background-color: #6a5acd; /* Luxurious slate blue for buttons */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50px; /* Pill shape for buttons */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s; /* Animation */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+}
+
+.increase-quantity:hover, .decrease-quantity:hover {
+    background-color: #483d8b; /* Darker shade on hover */
+    transform: scale(1.1); /* Slight scaling effect */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+}
+
+/* Checkout Button */
+.checkout-button {
+    background: linear-gradient(90deg, #32cd32, #28a745); /* Gradient for a fresh look */
+    color: white;
+    padding: 15px 30px; /* Large button for impact */
+    border: none;
+    border-radius: 50px; /* Rounded edges */
+    cursor: pointer;
+    font-size: 24px; /* Clear font size */
+    margin-top: 20px; /* Space above */
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transition */
+    box-shadow: 0 4px 20px rgba(50, 205, 50, 0.4); /* Shadow for depth */
+}
+
+.checkout-button:hover {
+    background: linear-gradient(90deg, #28a745, #32cd32); /* Reverse gradient on hover */
+    transform: translateY(-3px); /* Lift effect on hover */
+    box-shadow: 0 6px 25px rgba(34, 139, 34, 0.5); /* Deeper shadow on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .cart-item {
+        font-size: 18px; /* Adjust font size for smaller screens */
+    }
+    .quantity-control {
+        font-size: 22px; /* Adjust size for smaller screens */
+    }
+    .checkout-button {
+        font-size: 20px; /* Adjust size for smaller screens */
+        padding: 10px 20px; /* Adjust padding */
+    }
+}
+
+/* General Heading Styles */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0; /* Remove default margin */
+    font-family: 'Playfair Display', serif; /* Elegant serif font */
+    text-align: center; /* Center align the headings */
+    line-height: 1.2; /* Improve readability */
+    position: relative; /* For pseudo-elements */
+    
+    overflow: hidden; /* Ensure no overflow */
+}
+
+/* Specific Styles for Each Heading Level */
+h1 {
+    font-size: 3.5em; /* Large size for main headings */
+    font-weight: bold; /* Bold for emphasis */
+    margin-bottom: 20px; /* Space below */
+    text-transform: uppercase; /* Uppercase for emphasis */
+    color: #fff; /* White text */
+    background: linear-gradient(90deg, #ff5733, #ffb300); /* Gradient background */
+    -webkit-background-clip: text; /* Text gradient */
+    -webkit-text-fill-color: transparent; /* Remove fill color */
+    animation: slideIn 0.8s ease; /* Animation on load */
+    padding: 20px; /* Padding for effect */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
+}
+
+h2 {
+    font-size: 2.5em; /* Slightly smaller than h1 */
+    font-weight: 600; /* Semi-bold for emphasis */
+    margin-bottom: 15px; /* Space below */
+    color: #1976d2; /* Blue */
+    position: relative; /* For pseudo-element */
+    padding-bottom: 10px; /* Space below */
+    transition: color 0.3s; /* Smooth color transition */
+    animation: fadeInUp 0.8s ease; /* Animation on load */
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 50%; /* Width of the underline */
+    height: 5px; /* Thickness of the underline */
+    background: #ffd54f; /* Underline color */
+    margin: 10px auto 0; /* Centered */
+    border-radius: 5px; /* Rounded edges */
+    transform: scaleX(0); /* Initial scale for animation */
+    transition: transform 0.3s; /* Smooth transition */
+}
+
+h2:hover::after {
+    transform: scaleX(1); /* Scale on hover */
+}
+
+h3 {
+    font-size: 2em; /* Medium size for subheadings */
+    font-weight: 500; /* Medium weight */
+    margin-bottom: 10px; /* Space below */
+    color: #388e3c; /* Green */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+    animation: fadeInRight 0.8s ease; /* Animation on load */
+}
+
+h4 {
+    font-size: 1.75em; /* Smaller for subsections */
+    font-weight: bold; /* Bold for emphasis */
+    margin-bottom: 8px; /* Space below */
+    color: #8e24aa; /* Purple */
+    text-transform: capitalize; /* Capitalize first letter */
+    animation: pulse 1s infinite alternate; /* Pulsing animation */
+}
+
+h5, h6 {
+    font-size: 1.5em; /* Smaller for minor headings */
+    margin-bottom: 5px; /* Space below */
+    font-weight: normal; /* Regular weight */
+    color: #640303; /* Dark grey for subtlety */
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em; /* Adjust size for smaller screens */
+    }
+
+    h2 {
+        font-size: 2em; /* Adjust size for smaller screens */
+    }
+
+    h3 {
+        font-size: 1.75em; /* Adjust size for smaller screens */
+    }
+
+    h4, h5, h6 {
+        font-size: 1.5em; /* Adjust size for smaller screens */
+    }
+}
+
+
+/* Robot styles */
+#robot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 100px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+#robot:hover {
+    transform: scale(1.1); /* Scale effect on hover */
+}
+
+/* Dish display */
+#dish-display {
+    position: fixed;
+    bottom: 130px;
+    right: 150px; /* Position beside the robot */
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.5s; /* Smooth transition for fading */
+    opacity: 0; /* Start hidden */
+    display: none;
+    z-index: 1000;
+}
+
+.dish {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.dish img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    cursor: pointer; /* Change cursor on hover */
+}
+#beverages img {
+    width: 60px;  /* A reasonable size */
+    height: 60px;
+    object-fit: cover;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+#beverages {
+    background-color: #ffffff; /* Consistent white background */
+}
+
+#beverages ul {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap */
+    list-style-type: none;
+    padding: 0;
+}
+
+#beverages li {
+    flex: 0 0 25%; /* 4 items per row */
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #f8f9fa; /* Light grey for menu items */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#beverages li:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}

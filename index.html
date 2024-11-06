@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Home</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<body>
+    <div class="overlay"></div>
+    <div class="welcome-container">
+        <img class="hand-image" src="https://static.vecteezy.com/system/resources/previews/015/636/822/non_2x/illustration-of-karma-depicted-with-namaste-indian-women-s-hand-greeting-posture-of-namaste-with-lotus-flower-illustration-free-vector.jpg" alt="Namaste Hand" />
+        <h1 class="welcome-text">
+            WELCOME
+           </h1>
+    </div>
+
+    <script>
+        const welcomeContainer = document.querySelector('.welcome-container');
+        const overlay = document.querySelector('.overlay');
+
+        const hideWelcome = () => {
+            welcomeContainer.style.opacity = '0';
+            overlay.style.opacity = '0';
+
+            setTimeout(() => {
+                welcomeContainer.style.display = 'none';
+                overlay.style.display = 'none';
+            }, 1000);
+        };
+
+        document.body.addEventListener('touchstart', hideWelcome);
+        setTimeout(hideWelcome, 2000);
+    </script>
+
+    <div class="header">
+        <h1>Biryani House</h1>
+        <h6>In Partnership with Grand Luxe Interface</h6>
+        <a href="user.html" class="button-link">Menu</a>
+        <a href="login.html" class="button-link">Master Login</a>
+        <a href="reservation.html" class="button-link">Reserve a Table</a>
+        <a href="about.html" class="button-link">About</a>
+    </div>
+
+    <body class="popular-dishes">
+        <h2>Our Popular Dishes</h2>
+        <ul>
+            <li>
+                <a href="menu.html#yakhni-biryani">
+                    <img src="https://myfoodstory.com/wp-content/uploads/2021/08/Mutton-Yakhni-Pulao-2.jpg" alt="Yakhni Biryani">
+                    Yakhni Biryani
+                </a>
+            </li>
+            <li>
+                <a href="menu.html#thalassery-biryani">
+                    <img src="https://www.recipesaresimple.com/wp-content/uploads/2014/08/thalassery-dum-biriyani-recipe.jpg" alt="Thalassery Biryani">
+                    Thalassery Biryani
+                </a>
+            </li>
+            <li>
+                <a href="menu.html#afghani-biryani">
+                    <img src="https://i.ytimg.com/vi/AR2jv7kHWB8/maxresdefault.jpg" alt="Afghani Biryani">
+                    Afghani Biryani
+                </a>
+            </li>
+            <li>
+                <a href="menu.html#vegetable-biryani">
+                    <img src="https://i.ytimg.com/vi/Do7ZdUodDdw/maxresdefault.jpg" alt="Vegetable Biryani">
+                    Vegetable Biryani
+                </a>
+            </li>
+            <li>
+                <a href="menu.html#Grilled Paneer">
+                    <img src="https://madscookhouse.com/wp-content/uploads/2022/01/Grilled-Paneer-Tikkas-500x500.jpg" alt="Grilled Paneer">
+                    Grilled Paneer
+                </a>
+            </li>
+        </ul>
+
+        
+</html>

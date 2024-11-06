@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Biryani House</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your existing CSS file -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7; /* Light background for better contrast */
+        }
+        header {
+            background-color: #5a8e3b; /* Earthy green */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative; /* For positioning the Home button */
+        }
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #ffffff; /* White for contrast */
+            color: #5a8e3b; /* Earthy green for the button text */
+            border: 2px solid #5a8e3b; /* Earthy green border */
+            border-radius: 5px; /* Rounded corners */
+            text-decoration: none; /* Remove underline */
+            font-size: 16px; /* Font size */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+        }
+        .home-button:hover {
+            background-color: #5a8e3b; /* Earthy green on hover */
+            color: white; /* White text on hover */
+        }
+        main {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: white; /* White background for content */
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #3c3c3c; /* Dark gray for headings */
+            text-align: center; /* Centered headings for better presentation */
+        }
+        p {
+            line-height: 1.6;
+            color: #4b4b4b; /* Darker gray for paragraph text */
+            text-align: justify; /* Justify text for a cleaner look */
+        }
+        .chef-section, .manager-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .chef-image, .manager-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #5a8e3b; /* Match chef image border to header */
+            margin-bottom: 15px;
+            object-fit: cover; /* Maintain aspect ratio */
+        }
+        .chef-info, .manager-info {
+            padding: 0 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #5a8e3b; /* Earthy green for footer */
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .highlight {
+            background-color: #e9f5e9; /* Soft green background */
+            border-left: 5px solid #28a745; /* Green border */
+            padding: 10px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .dish-description {
+            margin: 20px 0;
+        }
+        /* Responsive Design for Mobile */
+        @media (max-width: 600px) {
+            .home-button {
+                padding: 8px 15px; /* Smaller padding for mobile */
+                font-size: 14px; /* Smaller font size for mobile */
+            }
+            .chef-image, .manager-image {
+                width: 120px; /* Smaller images for mobile */
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="home-button">Home</a>
+    <header>
+        <h1>About Biryani House</h1>
+        <h6>In Partnership with Grand Luxe Interface</h6>
+    </header>
+    
+    <main>
+        <section>
+            <h2>Our Authenticity</h2>
+            <p>
+                At Biryani House, we are dedicated to serving you dishes that are not just meals, but culinary experiences. Each dish is rooted in tradition and reflects the rich heritage of Indian cuisine. We take pride in using only the freshest ingredients, sourced directly from local markets, ensuring that every bite is bursting with flavor.
+            </p>
+            <div class="highlight">
+                Our signature biryanis are prepared using age-old techniques, marinated with exotic spices, and cooked to perfection in traditional vessels. 
+            </div>
+            <p class="dish-description">
+                Whether it's the succulent Chicken Dum Biryani or the aromatic Hyderabadi Biryani, our offerings are a true testament to the art of Indian cooking.
+            </p>
+        </section>
+
+        <section>
+            <h2>Meet Our Chefs</h2>
+            <p>
+                Our culinary team is the heart of Biryani House. Comprised of skilled chefs who have honed their craft over decades, they bring a wealth of experience and creativity to our kitchen. 
+            </p>
+            <div class="chef-section">
+                <img src="chef1.jpg" alt="Chef Anjali Sharma" class="chef-image"> <!-- Replace with actual image -->
+                <div class="chef-info">
+                    <h3>Chef Anjali Sharma</h3>
+                    <p>
+                        With over 15 years of experience, Chef Anjali specializes in traditional Indian cooking techniques. Her passion for food and eye for detail ensure that every dish is a masterpiece, marrying flavors and aromas in a way that captivates your senses.
+                    </p>
+                </div>
+            </div>
+            <div class="chef-section">
+                <img src="chef2.jpg" alt="Chef Rajesh Kumar" class="chef-image"> <!-- Replace with actual image -->
+                <div class="chef-info">
+                    <h3>Chef Rajesh Kumar</h3>
+                    <p>
+                        Chef Rajesh is known for his innovative approach to classic recipes. With a background in culinary arts from prestigious institutes, he creates dishes that are not only authentic but also visually stunning, providing an unforgettable dining experience.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Meet Our Manager</h2>
+            <p>
+                At the helm of our restaurant, our manager ensures that every aspect of your dining experience is perfect. With a keen eye for detail and a passion for customer satisfaction, they work tirelessly to maintain our high standards.
+            </p>
+            <div class="manager-section">
+                <img src="manager.jpg" alt="Manager Name" class="manager-image"> <!-- Replace with actual image -->
+                <div class="manager-info">
+                    <h3>Manager Name</h3>
+                    <p>
+                        With a decade of experience in the hospitality industry, our manager is dedicated to providing a warm and welcoming atmosphere. Their commitment to excellence and attention to customer feedback ensure that every visit to Biryani House is memorable.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Our Commitment to You</h2>
+            <p>
+                At Biryani House, we believe that dining should be a delightful experience. Our attentive service, combined with our flavorful dishes, ensures that every visit feels special. Whether you're celebrating a milestone or simply indulging in your favorite dish, we strive to create memories that last a lifetime.
+            </p>
+            <div class="highlight">
+                We invite you to join us and explore the rich tapestry of flavors that Indian cuisine has to offer.
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Biryani House. All rights reserved.</p>
+    </footer>
+</body>
+</html>

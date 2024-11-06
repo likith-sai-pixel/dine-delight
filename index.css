@@ -1,0 +1,169 @@
+.hidden {
+    display: none;
+}
+
+.select-table {
+    display: none; /* Ensure this class is applied initially */
+}
+
+/* General Body Styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #001f3f; /* Deep navy background */
+    color: #f2f2f2; /* Light text for contrast */
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black; /* Black background */
+    opacity: 0; /* Start transparent */
+    animation: fadeInOverlay 0.5s forwards; /* Fade in the overlay */
+    z-index: 999; /* Above other content */
+}
+
+/* Welcome Section */
+.welcome-container {
+    position: fixed;
+    top: -300px; /* Start from above the screen */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    opacity: 0; /* Start hidden */
+    z-index: 1000; /* Above the overlay */
+    text-align: center; /* Center the text */
+    animation: hoverIn 2s forwards; /* Animate the hand image */
+}
+
+.hand-image {
+    width: 300px; /* Set size */
+    height: 300px; /* Maintain a square shape */
+    display: block; /* Show the image */
+    opacity: 0; /* Start hidden */
+    animation: fadeInImage 1s forwards 0.5s; /* Fade in after 0.5 seconds */
+    margin: 0 auto; /* Center the image */
+}
+
+.welcome-text {
+    font-size: 4rem;
+    font-family: 'Algerian', sans-serif; /* Use Algerian font */
+    color: #ff4500; /* Flame color */
+    margin: 20px 0; /* Add some spacing */
+    display: inline-flex; /* Align the images with text */
+    align-items: center; /* Center vertically */
+    opacity: 0; /* Start hidden */
+    animation: fadeInText 1s forwards 1.5s; /* Fade in after the hand image */
+}
+
+/* Button Styling */
+.button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff5733; /* Button color */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 10px;
+    transition: background-color 0.3s;
+}
+
+.button-link:hover {
+    background-color: #e74c3c; /* Darker shade on hover */
+}
+
+/* Header */
+.header {
+    text-align: center;
+    background: linear-gradient(135deg, #900c3f, #ffc300); /* Burgundy to gold gradient */
+    color: white;
+    padding: 60px 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    animation: slideIn 0.8s ease-in-out; /* Slide-in animation */
+}
+
+.header h1 {
+    font-size: 4em;
+    font-family: 'Playfair Display', serif; /* Elegant font */
+    margin: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.header h6 {
+    font-size: 1.5em;
+    font-weight: 300;
+    margin: 10px 0;
+    color: #740235; /* Gold color for a premium touch */
+}
+
+/* Popular Dishes Section */
+.popular-dishes {
+    text-align: center;
+    padding: 40px;
+    background-color: #022547; /* Darker navy for dishes */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+    margin: 20px auto;
+    max-width: 1200px;
+    animation: fadeIn 1s ease-in; /* Fade-in animation */
+}
+
+.popular-dishes h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #ffc300; /* Gold color */
+    font-family: 'Playfair Display', serif; /* Stylish font */
+}
+
+.popular-dishes ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+}
+
+.popular-dishes li {
+    flex: 0 0 22%; /* 4 items per row */
+    margin: 10px;
+    background-color: #4e4e4e; /* Darker gray for items */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s; /* Add shadow on hover */
+}
+
+.popular-dishes li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.5); /* Lighter shadow on hover */
+}
+
+.popular-dishes li img {
+    width: 100%;
+    height: auto;
+    border-bottom: 4px solid #ffc300; /* Gold accent border */
+}
+
+.popular-dishes li a {
+    text-decoration: none;
+    color: #f2f2f2; /* Light gray text */
+    padding: 10px;
+    display: block;
+    text-align: center;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+.popular-dishes li a:hover {
+    color: #900c3f; /* Burgundy on hover */
+}
+
+.hidden {
+    display: none; /* Hide elements with this class */
+}

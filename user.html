@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We Value Your Info!</title>
+    <link rel="stylesheet" href="userstyles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">We’re Almost There!</h1>
+        <p class="subtitle">Just a few details and your order will be on its way!</p>
+
+        <form id="user-form" autocomplete="off">
+            <!-- Name Field -->
+            <label for="name">What's your name?</label>
+            <input type="text" id="name" name="name" placeholder="Your full name" required>
+            <p class="thanks-message" id="name-thanks"></p>
+
+            <!-- Phone Field -->
+            <label for="phone">Your phone number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+            <p class="thanks-message" id="phone-thanks"></p>
+
+            <!-- Email Field -->
+            <label for="email">Your email (for the latest updates!)</label>
+            <input type="email" id="email" name="email" placeholder="Your email" required>
+            <p class="thanks-message" id="email-thanks"></p>
+
+            <!-- Address Field -->
+            <label for="address">Delivery address</label>
+            <input type="text" id="address" name="address" placeholder="Your delivery address" required>
+            <p class="thanks-message" id="address-thanks"></p>
+
+            <!-- Zipcode Field -->
+            <label for="zipcode">Zipcode</label>
+            <input type="text" id="zipcode" name="zipcode" placeholder="Your area code" required>
+            <p class="thanks-message" id="zipcode-thanks"></p>
+
+            <!-- Food Preference -->
+            <label>What’s your food vibe today?</label>
+            <div class="radio-group">
+                <input type="radio" id="veg" name="preference" value="veg" required>
+                <label for="veg">Veg 🌱</label>
+                <input type="radio" id="nonveg" name="preference" value="nonveg" required>
+                <label for="nonveg">Non-Veg 🍖</label>
+            </div>
+            <p class="thanks-message" id="preference-thanks"></p>
+
+            <!-- Additional Notes -->
+            <label for="notes">Any special requests?</label>
+            <textarea id="notes" name="notes" placeholder="Let us know if you have any requests!" rows="3"></textarea>
+            <p class="thanks-message" id="notes-thanks"></p>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn">Let’s Eat! 🍽️</button>
+            
+        </form>
+    </div>
+
+    <script>
+        const showThanks = (fieldId, message) => {
+            const thanksMessage = document.getElementById(fieldId);
+            thanksMessage.innerHTML = message;
+            thanksMessage.style.opacity = 1;
+
+            setTimeout(() => {
+                thanksMessage.style.opacity = 0;
+            }, 2000); // Hide the message after 2 seconds
+        };
+
+        // Event listeners for each field
+        document.getElementById('name').addEventListener('input', function() {
+            showThanks('name-thanks', 'Thanks for sharing your lovely name! 😊');
+        });
+
+        document.getElementById('phone').addEventListener('input', function() {
+            showThanks('phone-thanks', 'Thanks! We promise no spam calls! 📞');
+        });
+
+        document.getElementById('email').addEventListener('input', function() {
+            showThanks('email-thanks', 'You’ll only get tasty updates! 🍕');
+        });
+
+        document.getElementById('address').addEventListener('input', function() {
+            showThanks('address-thanks', 'Got it! We’ll find you for sure! 🏠');
+        });
+
+        document.getElementById('zipcode').addEventListener('input', function() {
+            showThanks('zipcode-thanks', 'Thanks! We’ll be there fast! 🚗');
+        });
+
+        const preferenceRadioButtons = document.querySelectorAll('input[name="preference"]');
+        preferenceRadioButtons.forEach((radio) => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'veg') {
+                    showThanks('preference-thanks', 'Veg it is! 🌿');
+                } else {
+                    showThanks('preference-thanks', 'Non-Veg for the win! 🍖');
+                }
+            });
+        });
+
+        document.getElementById('notes').addEventListener('input', function() {
+            showThanks('notes-thanks', 'Noted! We’ll do our best! ✨');
+        });
+
+        // Form submission
+        document.getElementById("user-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                address: document.getElementById('address').value,
+                zipcode: document.getElementById('zipcode').value,
+                preference: document.querySelector('input[name="preference"]:checked').value,
+                notes: document.getElementById('notes').value,
+               
+            };
+
+            // Submit user data
+            fetch('http://localhost:5000/submit', {
+                method: 'POST',
+                headers: {              
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Check if the response indicates success
+                if (data.message === 'Data saved successfully!') {
+                    window.location.href = 'menu.html'; // Redirect on success
+                } else {
+                    alert('Error: ' + data.message); // Show error message
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error submitting the form.');
+            });
+        });
+    </script>
+</body>
+</html>

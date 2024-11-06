@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Staff Login</h1>
+        <form id="login-form" autocomplete="off">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required autocomplete="off">
+        
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required autocomplete="off">
+        
+            <button type="submit">Login</button>
+        </form>
+        
+        <div id="sign-up">
+            <p>Don't have an account? <a href="#" id="show-signup">Sign up here</a></p>
+        </div>
+
+        <!-- Pin Popup Modal -->
+        <div id="pin-modal" class="modal">
+            <div class="modal-content">
+                <h2>Enter Master PIN</h2>
+                <input type="password" id="pin-input" maxlength="4" placeholder="Enter 4-digit PIN" required>
+                <button id="verify-pin">Verify</button>
+                <button id="close-modal">Close</button>
+            </div>
+        </div>
+
+        <form id="signup-form" style="display:none;" autocomplete="off">
+            <label for="new-username">New Username:</label>
+            <input type="text" id="new-username" name="new-username" required autocomplete="off">
+        
+            <label for="new-password">New Password:</label>
+            <input type="password" id="new-password" name="new-password" required autocomplete="off">
+        
+            <button type="submit">Sign Up</button>
+            <button type="button" id="cancel-signup">Cancel</button>
+        </form>
+        
+    </div>
+
+    <script>
+        const masterPin = '2005';
+
+        // Show the PIN popup when clicking "Sign up here"
+        document.getElementById('show-signup').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('pin-modal').style.display = 'block';
+        });
+
+        // Verify the entered PIN
+        document.getElementById('verify-pin').addEventListener('click', function() {
+            const pin = document.getElementById('pin-input').value;
+            if (pin === masterPin) {
+                document.getElementById('pin-modal').style.display = 'none';
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('signup-form').style.display = 'block';
+            } else {
+                alert('Invalid PIN. Please try again.');
+            }
+        });
+
+        // Close the PIN popup
+        document.getElementById('close-modal').addEventListener('click', function() {
+            document.getElementById('pin-modal').style.display = 'none';
+        });
+
+        // Cancel signup and return to login form
+        document.getElementById('cancel-signup').addEventListener('click', function() {
+            document.getElementById('signup-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+        });
+
+        // Handle login
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const formData = {
+                username: document.getElementById('username').value,
+                password: document.getElementById('password').value
+            };
+
+            fetch('http://localhost:5000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    window.location.href = 'customerdata.html';
+                } else {
+                    alert('Login failed: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error during login:', error);
+                alert('Error during login: ' + error.message);
+            });
+        });
+
+        // Handle sign up
+        document.getElementById("signup-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const signUpData = {
+                username: document.getElementById('new-username').value,
+                password: document.getElementById('new-password').value
+            };
+
+            fetch('http://localhost:5000/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(signUpData),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    alert('Sign up successful! You can now log in.');
+                    document.getElementById('signup-form').style.display = 'none';
+                    document.getElementById('login-form').style.display = 'block';
+                } else {
+                    alert('Sign up failed: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error during sign up:', error);
+                alert('Error during sign up: ' + error.message);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+/* Reservation Section Styling */
+body {
+    background-color: #1a1a1a; /* Dark background for the body */
+    font-family: Arial, sans-serif;
+    color: white; /* White text for better contrast */
+}
+
+h2 {
+    text-align: center;
+    margin: 40px 0;
+    color: #ffcc00; /* Softer yellow for the heading */
+}
+
+/* Form Styling */
+form {
+    max-width: 600px; /* Limit the width of the form */
+    margin: 0 auto; /* Center the form */
+    background-color: #2a2a2a; /* Dark background for the form */
+    padding: 20px;
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Soft shadow */
+}
+
+/* Input Fields Styling */
+.filling-input {
+    width: 100%; /* Full width for input fields */
+    padding: 15px;
+    margin: 10px 0;
+    border: 2px solid #ff5733; /* Bright border color */
+    border-radius: 10px; /* Rounded corners for inputs */
+    background-color: #3c3c3c; /* Darker background for input */
+    color: #ffffff; /* White text for inputs */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Update the .filling-input class to remove extra padding/margins */
+.filling-input {
+    width: 100%; /* Keep the full width */
+    padding: 12px; /* Reduce padding if necessary */
+    margin: 10px 0; /* Maintain margin */
+    border: 2px solid #ff5733; /* Keep the border */
+    border-radius: 10px; /* Keep rounded corners */
+    background-color: #3c3c3c; /* Keep the background color */
+    color: #ffffff; /* Keep white text */
+    transition: background-color 0.3s ease; /* Keep transition */
+}
+
+
+/* Button Styling */
+.button-link {
+    background-color: #ff5733; /* Bright button */
+    color: #ffffff; /* White text */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 10px; /* Space above button */
+}
+
+.button-link:hover {
+    background-color: #d84a16; /* Darker orange on hover */
+    transform: translateY(-3px); /* Lift effect */
+}
+
+/* Dialog Box Styling */
+.table-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; /* Wider for impact */
+    max-width: 800px;
+    background-color: #444; /* Dark background for dialog */
+    border-radius: 15px; /* Softer corners */
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9); /* Deep shadow */
+}
+
+/* Table Styles */
+.table {
+    color: #333;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-align: center;
+    background-color: #3c3c3c; /* Dark background for tables */
+    margin: 10px; /* Space between tables */
+}
+
+.table:hover {
+    background-color: #ff5733; /* Bright color on hover */
+    transform: translateY(-5px); /* Slight lift on hover */
+}
+
+/* Responsive Table Grid */
+.table-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between tables */
+    margin-top: 30px;
+}
